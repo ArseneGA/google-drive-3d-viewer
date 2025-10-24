@@ -1,0 +1,8 @@
+Flask==3.0.0
+flask-cors==4.0.0
+gunicorn==21.2.0
+Werkzeug==3.0.1
+
+# Temps réel statut conversion
+flask-socketio==5.3.6
+eventlet==0.33.3
