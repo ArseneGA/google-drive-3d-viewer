@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://esm.sh https://*.esm.sh; style-src 'self' 'unsafe-inline'; connect-src * blob:; img-src 'self' data: blob:; frame-ancestors *">
+  <title>3D Drive Viewer v1.2</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+</head>
+<body>
+  
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <img src="logo.svg" alt="3D Drive Viewer" class="app-logo">
+      <h1 class="app-title">3D Drive Viewer</h1>
+    </div>
+  </header>
+
+  <!-- Material Controls -->
+  <div id="material-controls" class="material-controls">
+    <label>Couleur:</label>
+    <button class="color-swatch" style="background-color: #4285F4;" data-color="0x4285F4" title="Bleu Google"></button>
+    <button class="color-swatch" style="background-color: #34A853;" data-color="0x34A853" title="Vert Google"></button>
+    <button class="color-swatch" style="background-color: #FBBC05;" data-color="0xFBBC05" title="Jaune Google"></button>
+    <button class="color-swatch" style="background-color: #EA4335;" data-color="0xEA4335" title="Rouge Google"></button>
+    <button class="color-swatch" style="background-color: #BDBDBD;" data-color="0xBDBDBD" title="Gris"></button>
+    <button class="color-swatch" style="background-color: #9C27B0;" data-color="0x9C27B0" title="Violet"></button>
+    <button class="color-swatch" style="background-color: #FF6D00;" data-color="0xFF6D00" title="Orange"></button>
+    
+    <div class="controls-separator"></div>
+    <button id="original-color-btn" class="special-btn" title="Restaurer couleur d'origine">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+        <path d="M21 3v5h-5"/>
+        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+        <path d="M3 21v-5h5"/>
+      </svg>
+      <span>Original</span>
+    </button>
+    
+    <button id="multicolor-btn" class="special-btn multicolor-btn" title="Appliquer plusieurs couleurs">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 2a10 10 0 0 1 0 20"/>
+      </svg>
+      <span>Multicouleur</span>
+    </button>
+  </div>
+
+  <!-- Main viewer container -->
+  <main class="viewer-container">
+    <canvas id="viewer-canvas"></canvas>
+  </main>
+
+  <!-- Loading overlay -->
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="spinner"></div>
+      <p class="loader-text">Chargement du modèle...</p>
+    </div>
+  </div>
+
+  <!-- Error overlay (hidden by default) -->
+  <div id="error-overlay" class="error-overlay" style="display: none;">
+    <div class="error-content">
+      <svg class="error-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <h2 class="error-title">Erreur de chargement</h2>
+      <p class="error-message" id="error-message"></p>
+      <button id="retry-btn" class="retry-btn">Réessayer</button>
+    </div>
+  </div>
+
+  <script type="module" src="viewer-v2.js"></script>
+</body>
+</html>
